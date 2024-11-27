@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
+    <title>Portfolio von Alex Fischer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +19,14 @@
             text-align: center;
             padding: 50px 0;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .section {
@@ -42,23 +50,28 @@
             margin-bottom: 20px;
         }
 
-        .card {
+        .project {
             display: inline-block;
             margin: 20px;
             width: 250px;
             height: 250px;
-            background-color: #ff7e5f;
-            color: white;
             border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), inset 0 -4px 10px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             animation: float 3s ease-in-out infinite;
         }
 
-        .card:hover {
+        .project:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 -6px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .project img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         footer {
@@ -143,38 +156,35 @@
 <body>
 
 <header class="fade-in">
-    <h1>Willkommen zu meinem Portfolio</h1>
-    <p>Ein Überblick über meine Projekte und Arbeiten</p>
+    <h1>Alex Fischer</h1>
+    <p>Webentwickler | Designer | Technologieliebhaber</p>
+    <img src="https://via.placeholder.com/150" alt="Profilbild von Alex Fischer">
 </header>
-
 <div class="section fade-in" id="section1">
     <h2>Meine Projekte</h2>
-    <div class="card" onclick="alert('Projekt 1 Details')">Projekt 1</div>
-    <div class="card" onclick="alert('Projekt 2 Details')">Projekt 2</div>
-    <div class="card" onclick="alert('Projekt 3 Details')">Projekt 3</div>
+    <div class="project" onclick="alert('Projekt 1 Details')">
+        <img src="https://via.placeholder.com/250x250" alt="Projekt 1">
+    </div>
+    <div class="project" onclick="alert('Projekt 2 Details')">
+        <img src="https://via.placeholder.com/250x250" alt="Projekt 2">
+    </div>
+    <div class="project" onclick="alert('Projekt 3 Details')">
+        <img src="https://via.placeholder.com/250x250" alt="Projekt 3">
+    </div>
 </div>
-
 <div class="section fade-in" id="section2">
     <h2>Über mich</h2>
-    <p>Ich bin ein leidenschaftlicher Webentwickler mit einem Interesse an modernen Technologien.</p>
+    <p>Ich bin die PERSONA Alex Fischer, ein leidenschaftlicher Webentwickler mit Fokus auf moderne Technologien und benutzerzentriertes Design. Mit einem kreativen Ansatz entwickle ich Lösungen, die sowohl funktional als auch visuell ansprechend sind.</p>
 </div>
-
 <footer class="fade-in">
-    <p>© 2024 Mein Portfolio - Alle Rechte vorbehalten</p>
+    <p>© 2024 Alex Fischer - Alle Rechte vorbehalten</p>
 </footer>
-
-<!-- Scroll Indicator -->
 <div class="scroll-indicator">
     <div class="scroll-indicator-bar" id="scrollIndicator"></div>
 </div>
-
-<!-- Go to Top Button -->
 <button class="go-to-top" id="goToTop" onclick="scrollToTop()">↑</button>
-
 <script>
-    // Go to Top Button functionality
     window.onscroll = function() { showGoToTopButton(); updateScrollIndicator(); };
-
     function showGoToTopButton() {
         var button = document.getElementById('goToTop');
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -183,13 +193,10 @@
             button.style.display = "none";
         }
     }
-
     function scrollToTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-
-    // Scroll Indicator functionality
     function updateScrollIndicator() {
         var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrollPosition = document.documentElement.scrollTop;
@@ -197,6 +204,5 @@
         document.getElementById('scrollIndicator').style.width = scrollPercent + "%";
     }
 </script>
-
 </body>
 </html>
