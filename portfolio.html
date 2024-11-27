@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .section:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: inline-block;
+            margin: 20px;
+            width: 250px;
+            height: 250px;
+            background-color: #ff7e5f;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), inset 0 -4px 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 -6px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .go-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff7e5f;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .go-to-top:hover {
+            transform: scale(1.2);
+        }
+
+        /* Fixierter Scroll-Indikator oben links */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #ff7e5f;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-indicator-bar {
+            width: 0;
+            height: 100%;
+            background-color: #feb47b;
+            transition: width 0.25s;
+        }
+
+        /* CSS Animationen */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<header class="fade-in">
+    <h1>Willkommen zu meinem Portfolio</h1>
+    <p>Ein Überblick über meine Projekte und Arbeiten</p>
+</header>
+
+<div class="section fade-in" id="section1">
+    <h2>Meine Projekte</h2>
+    <div class="card" onclick="alert('Projekt 1 Details')">Projekt 1</div>
+    <div class="card" onclick="alert('Projekt 2 Details')">Projekt 2</div>
+    <div class="card" onclick="alert('Projekt 3 Details')">Projekt 3</div>
+</div>
+
+<div class="section fade-in" id="section2">
+    <h2>Über mich</h2>
+    <p>Ich bin ein leidenschaftlicher Webentwickler mit einem Interesse an modernen Technologien.</p>
+</div>
+
+<footer class="fade-in">
+    <p>© 2024 Mein Portfolio - Alle Rechte vorbehalten</p>
+</footer>
+
+<!-- Scroll Indicator -->
+<div class="scroll-indicator">
+    <div class="scroll-indicator-bar" id="scrollIndicator"></div>
+</div>
+
+<!-- Go to Top Button -->
+<button class="go-to-top" id="goToTop" onclick="scrollToTop()">↑</button>
+
+<script>
+    // Go to Top Button functionality
+    window.onscroll = function() { showGoToTopButton(); updateScrollIndicator(); };
+
+    function showGoToTopButton() {
+        var button = document.getElementById('goToTop');
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    // Scroll Indicator functionality
+    function updateScrollIndicator() {
+        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrollPosition = document.documentElement.scrollTop;
+        var scrollPercent = (scrollPosition / scrollHeight) * 100;
+        document.getElementById('scrollIndicator').style.width = scrollPercent + "%";
+    }
+</script>
+
+</body>
+</html>
